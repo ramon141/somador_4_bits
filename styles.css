@@ -1,0 +1,50 @@
+.botaoUp {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    cursor: pointer;
+}
+
+.botaoBottom {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    margin-top: 202px;
+    cursor: pointer;
+}
+
+.chip {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.botaoUp label{
+    position: absolute;
+    text-align: center;
+    top: 18px;
+    left: 18px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.botaoBottom label{
+    position: absolute;
+    text-align: center;
+    left: 18px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.leds {
+    margin-top: 50px;
+    margin: 80px;
+}
+
+body {
+    background-image: url('assets/backgroud.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}

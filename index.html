@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Somador de 4bits</title>
+</head>
+
+<body>
+
+    <div class="chip">
+        <div class="center">
+            <button value="false" onclick="return false;" title="VCC" id="VCC" class=" botaoUp"
+                style="margin-left: 17px;">
+                <label style="left: 13px;">VCC</label>
+                <img src="assets/disableTop.png" alt="74HC283">
+
+            </button>
+            <button value="false" onclick="update(this);" title="B2" id="B2" class="botaoUp" style="margin-left: 90px;">
+                <label>B2</label>
+                <img src="assets/disableTop.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this);" title="A2" id="A2" class="botaoUp"
+                style="margin-left: 163px;">
+                <label>A2</label>
+                <img src="assets/disableTop.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="return false;" title="S2" id="S2" class="botaoUp"
+                style="margin-left: 237px;">
+                <label>S2</label>
+                <img src="assets/disableTopSaida.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this);" title="A3" id="A3" class="botaoUp"
+                style="margin-left: 310px;">
+                <label>A3</label>
+                <img src="assets/disableTop.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this);" title="B3" id="B3" class="botaoUp"
+                style="margin-left: 384px;">
+                <label>B3</label>
+                <img src="assets/disableTop.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="return false;" title="S3" id="S3" class="botaoUp"
+                style="margin-left: 457px;">
+                <label>S3</label>
+                <img src="assets/disableTopSaida.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this)" title="Cout" id="Cout" class="botaoUp"
+                style="margin-left: 531px;">
+                <label style="left: 10px;">Cout</label>
+                <img src="assets/disableTopSaida.png" alt="74HC283">
+            </button>
+
+            <button value="false" onclick="return false;" title="S1" id="S1" class="botaoBottom"
+                style="margin-left: 17px;">
+                <label>S1</label>
+                <img src="assets/disableBottomSaida.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this);" title="B1" id="B1" class="botaoBottom"
+                style="margin-left: 90px;">
+                <label>B1</label>
+                <img src="assets/disableBottom.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this);" title="A1" id="A1" class="botaoBottom"
+                style="margin-left: 163px;">
+                <label>A1</label>
+                <img src="assets/disableBottom.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="return false;" title="S0" id="S0" class="botaoBottom"
+                style="margin-left: 237px;">
+                <label>S0</label>
+                <img src="assets/disableBottomSaida.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this);" title="A0" id="A0" class="botaoBottom"
+                style="margin-left: 310px;">
+                <label>A0</label>
+                <img src="assets/disableBottom.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this);" title="B0" id="B0" class="botaoBottom"
+                style="margin-left: 384px;">
+                <label>B0</label>
+                <img src="assets/disableBottom.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="update(this);" title="Cin" id="Cin" class="botaoBottom"
+                style="margin-left: 457px;">
+                <label>Cin</label>
+                <img src="assets/disableBottom.png" alt="74HC283">
+            </button>
+            <button value="false" onclick="return false;" title="GND" id="GND" class="botaoBottom"
+                style="margin-left: 531px;">
+                <label style="left: 12px;">GND</label>
+                <img src="assets/disableBottom.png" alt="74HC283">
+            </button>
+
+            <img src="assets/74HC283.png" alt="74HC283">
+
+
+            <div class="leds">
+                <img id="imgCout" src="assets/led/led_carry_off.png" width="80px" alt="LED">
+                <img id="imgLedS0" src="assets/led/off.png" width="80px" alt="LED">
+                <img id="imgLedS1" src="assets/led/off.png" width="80px" alt="LED">
+                <img id="imgLedS2" src="assets/led/off.png" width="80px" alt="LED">
+                <img id="imgLedS3" src="assets/led/off.png" width="80px" alt="LED">
+            </div>
+
+        </div>
+    </div>
+
+    <script src="somador.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <script>
+
+        function update(e) {
+            updateColorButtons(e);
+
+            let A0 = document.getElementById("A0").value == "true";
+            let A1 = document.getElementById("A1").value == "true";
+            let A2 = document.getElementById("A2").value == "true";
+            let A3 = document.getElementById("A3").value == "true";
+
+            let B0 = document.getElementById("B0").value == "true";
+            let B1 = document.getElementById("B1").value == "true";
+            let B2 = document.getElementById("B2").value == "true";
+            let B3 = document.getElementById("B3").value == "true";
+
+            let Cin = document.getElementById("Cin").value == "true";
+
+            let result = somador4Bits(
+                [A3, A2, A1, A0],
+                [B3, B2, B1, B0],
+                Cin);
+
+            drawResult(result);
+        }
+
+        function updateColorButtons(e) {
+            if (e.value == "true") {
+                e.value = false;
+                e.innerHTML = e.innerHTML.replace("enable", "disable");
+            } else {
+                e.value = true;
+                e.innerHTML = e.innerHTML.replace("disable", "enable");
+            }
+        }
+
+        function drawResult(result) {
+            if (result.S0) {
+                document.getElementById("S0").innerHTML = document.getElementById("S0").innerHTML.replace("disable", "enable");
+                document.getElementById("imgLedS0").src = document.getElementById("imgLedS0").src.replace("off.png", "on.png");
+            } else {
+                document.getElementById("S0").innerHTML = document.getElementById("S0").innerHTML.replace("enable", "disable");
+                document.getElementById("imgLedS0").src = document.getElementById("imgLedS0").src.replace("on.png", "off.png");
+            }
+
+            if (result.S1) {
+                document.getElementById("S1").innerHTML = document.getElementById("S1").innerHTML.replace("disable", "enable");
+                document.getElementById("imgLedS1").src = document.getElementById("imgLedS1").src.replace("off.png", "on.png");
+            } else {
+                document.getElementById("S1").innerHTML = document.getElementById("S1").innerHTML.replace("enable", "disable");
+                document.getElementById("imgLedS1").src = document.getElementById("imgLedS1").src.replace("on.png", "off.png");
+            }
+
+            if (result.S2) {
+                document.getElementById("S2").innerHTML = document.getElementById("S2").innerHTML.replace("disable", "enable");
+                document.getElementById("imgLedS2").src = document.getElementById("imgLedS2").src.replace("off.png", "on.png");
+            } else {
+                document.getElementById("S2").innerHTML = document.getElementById("S2").innerHTML.replace("enable", "disable");
+                document.getElementById("imgLedS2").src = document.getElementById("imgLedS2").src.replace("on.png", "off.png");
+            }
+
+            if (result.S3) {
+                document.getElementById("S3").innerHTML = document.getElementById("S3").innerHTML.replace("disable", "enable");
+                document.getElementById("imgLedS3").src = document.getElementById("imgLedS3").src.replace("off.png", "on.png");
+            } else {
+                document.getElementById("S3").innerHTML = document.getElementById("S3").innerHTML.replace("enable", "disable");
+                document.getElementById("imgLedS3").src = document.getElementById("imgLedS3").src.replace("on.png", "off.png");
+            }
+
+            if (result.Cout) {
+                document.getElementById("Cout").innerHTML = document.getElementById("Cout").innerHTML.replace("disable", "enable");
+                document.getElementById("imgCout").src = document.getElementById("imgCout").src.replace("off.png", "on.png");
+            } else {
+                document.getElementById("Cout").innerHTML = document.getElementById("Cout").innerHTML.replace("enable", "disable");
+                document.getElementById("imgCout").src = document.getElementById("imgCout").src.replace("on.png", "off.png");
+            }
+        }
+    </script>
+</body>
+
+</html>
